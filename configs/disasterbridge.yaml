@@ -1,0 +1,51 @@
+bridge:
+  num_timesteps: 500
+  mt_type: linear
+  max_var: 1.0
+  eta: 1.0
+  objective: grad
+  skip_sample: true
+  sample_type: cosine
+  sample_step: 100
+
+denoiser:
+  model_channels: 128
+  channel_mult: [1, 2, 4, 8]
+  num_res_blocks: 3
+  dropout: 0.05
+  use_spade: true
+  mask_base_channels: 48
+  cond_channels: 160
+  opt_pretrained: false
+  opt_freeze_bn: true
+  n_disaster_types: 7
+  disaster_emb_dim: 128
+  use_disaster_style: true
+  disaster_style_dim: 128
+  disaster_style_on_down: false
+  disaster_style_on_mid: true
+  disaster_style_on_up: true
+  use_gca: true
+  gca_heads: 8
+  gca_dim_head: 32
+  gca_down_levels: [2, 3]
+  gca_at_bottleneck: true
+  gca_rho0: 1.0
+  gca_rho1: 1.0
+  gca_rho2: 0.7
+  gca_rho3: 0.3
+
+data:
+  image_size: 1024
+  sar_channels: 1
+  mask_num_classes: 4
+  wavelet_levels: 2
+  n_disaster_types: 7
+  disaster_type_names:
+    - earthquake
+    - storm
+    - wildfire
+    - flood
+    - volcano
+    - explosion
+    - conflict
